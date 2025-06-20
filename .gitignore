@@ -37,22 +37,23 @@ bower_components
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
-
+build
+release
 # Dependency directories
-node_modules/
-jspm_packages/
-
+node_modules
+jspm_packages
+package-lock.json
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
 # TypeScript cache
-*.tsbuildinfo
+.tsbuildinfo
 
 # Optional npm cache directory
 .npm
 
 # Optional eslint cache
-.eslintcache
+**/.eslintcache
 
 # Optional stylelint cache
 .stylelintcache
