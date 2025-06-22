@@ -14,10 +14,26 @@ const theme = createTheme({
       light: '#FF4C2426',
       contrastText: '#FF4C24',
     },
+    background: {
+      default: '#FAFAFA',
+      paper: '#FFFFFF',
+    },
   },
   components: {
     MuiButton: {
+      defaultProps: {
+        disableElevation: true, // 🔴 Disable elevation globally
+      },
       styleOverrides: {
+        root: {
+          boxShadow: 'none', // 🔴 Prevent shadow override in all variants
+          '&:hover': {
+            boxShadow: 'none',
+          },
+          '&:active': {
+            boxShadow: 'none',
+          },
+        },
         containedPrimary: {
           backgroundColor: '#60E5AE',
           color: '#000000',
@@ -42,6 +58,35 @@ const theme = createTheme({
         },
       },
     },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: '15px',
+          boxShadow:
+            '0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 23px 44px 0px rgba(176, 183, 195, 0.14)',
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: '8px',
+          boxShadow: '0px 1px 3px 0px rgba(0, 0, 0, 0.12)',
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#E0E0E0',
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#60E5AE',
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#60E5AE',
+          },
+        },
+      },
+    },
+  },
+  typography: {
+    fontFamily: ['Poppins', 'Roboto', 'sans-serif'].join(','),
   },
 });
 

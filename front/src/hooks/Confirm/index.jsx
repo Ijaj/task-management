@@ -150,7 +150,7 @@ const ConfirmDialog = ({
     <Dialog
       open={open}
       onClose={onClose}
-      maxWidth="xs"
+      maxWidth="xl"
       fullWidth
       slotProps={{
         paper: {

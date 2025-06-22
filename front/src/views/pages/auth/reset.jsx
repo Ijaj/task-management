@@ -124,8 +124,8 @@ const ResetPassword = () => {
               fullWidth
               margin="normal"
               name="password"
-              label="Password"
-              placeholder="Enter password"
+              label="Old Password"
+              placeholder="Enter the old password"
               type={showPassword ? 'text' : 'password'}
               slotProps={{
                 input: {
@@ -144,8 +144,8 @@ const ResetPassword = () => {
               fullWidth
               margin="normal"
               name="confirmPassword"
-              label="Confirm Password"
-              placeholder="Retype password"
+              label="New Password"
+              placeholder="Enter a new password"
               type={showPassword ? 'text' : 'password'}
               slotProps={{
                 input: {
@@ -165,6 +165,7 @@ const ResetPassword = () => {
               margin="normal"
               name="retypePassword"
               label="Retype Password"
+              placeholder="Retype the new password"
               type={showPassword ? 'text' : 'password'}
               slotProps={{
                 input: {
