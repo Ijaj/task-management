@@ -27,3 +27,8 @@ export const verifyToken = (token: string) => {
     throw new Error("Invalid token");
   }
 };
+
+export const deleteUser = async (id: string) => {
+  const d = await User.deleteOne({ _id: id });
+  return d.deletedCount;
+};

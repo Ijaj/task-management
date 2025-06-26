@@ -1,11 +1,13 @@
 import express from "express";
 import {
+  _delete,
   loginUser,
   registerUser,
   verifyUser,
 } from "../controllers/auth.controller";
 import { body } from "express-validator";
 import { validateMiddleware } from "../middlewares/validate.middleware";
+import { authMiddleware } from "../middlewares/auth.middleware";
 
 const router = express.Router();
 
@@ -29,5 +31,6 @@ router.post(
   loginUser
 );
 router.get("/verify", verifyUser);
+router.delete("/delete", [authMiddleware], _delete);
 
 export default router;

@@ -1,7 +1,5 @@
 import express from "express";
-import { getTasks } from "../controllers/user.controller";
-import { header } from "express-validator";
-import { validateMiddleware } from "../middlewares/validate.middleware";
+import { upsertTask, getTasks } from "../controllers/user.controller";
 import { authMiddleware } from "../middlewares/auth.middleware";
 
 const router = express.Router();
@@ -9,14 +7,17 @@ const router = express.Router();
 router.get(
   "/tasks",
   [
-    header("authorization")
-      .exists()
-      .withMessage("Authorization header is missing")
-      .matches(/^Bearer\s[\w-]+\.[\w-]+\.[\w-]+$/)
-      .withMessage("Invalid Authorization header format"),
-    validateMiddleware,
+    // header("authorization")
+    //   .exists()
+    //   .withMessage("Authorization header is missing")
+    //   .matches(/^Bearer\s[\w-]+\.[\w-]+\.[\w-]+$/)
+    //   .withMessage("Invalid Authorization header format"),
+    // validateMiddleware,
     authMiddleware,
   ],
   getTasks
 );
+
+router.put("/task", upsertTask);
+
 export default router;

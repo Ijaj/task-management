@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { UserDocument } from "../types/user.types";
+import "./task.model";
 
 const userSchema = new mongoose.Schema<UserDocument>({
   name: { type: String, required: true },

@@ -1,6 +1,10 @@
 import { Request, Response, NextFunction } from "express";
-import { register, login } from "../services/auth.service";
-import { getTokerFromRequest, getUserFromToken } from "../utils/helpers";
+import { register, login, deleteUser } from "../services/auth.service";
+import {
+  getTokenFromRequest,
+  getUserFromToken,
+  getUserIdFromToken,
+} from "../utils/helpers";
 
 export const registerUser = async (
   req: Request,
@@ -34,7 +38,7 @@ export const verifyUser = async (
   next: NextFunction
 ) => {
   try {
-    const token = getTokerFromRequest(req);
+    const token = getTokenFromRequest(req);
     if (!token) {
       res.status(401).json({ message: "Unauthorized" });
     } else {
@@ -45,3 +49,12 @@ export const verifyUser = async (
     next(err);
   }
 };
+
+export async function _delete(req: Request, res: Response, next: NextFunction) {
+  const deleted = await deleteUser(req.user!._id);
+  if (deleted === 1) {
+    res.status(204).send();
+  } else {
+    res.status(204).json({ message: "The requested user was not found" });
+  }
+}

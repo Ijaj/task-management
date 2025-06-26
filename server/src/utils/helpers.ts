@@ -2,7 +2,7 @@ import { Request } from "express";
 import { verifyToken } from "../services/auth.service";
 import { User } from "../models/user.model";
 
-export const getTokerFromRequest = (req: Request) => {
+export const getTokenFromRequest = (req: Request) => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     throw new Error("Authorization token missing");
@@ -13,7 +13,7 @@ export const getTokerFromRequest = (req: Request) => {
 export const getUserFromToken = async (token: string) => {
   try {
     const id = getUserIdFromToken(token);
-    const user = await User.findById(id);
+    const user = await User.findById(id).select("-password");
     if (!user) throw new Error("User not found");
     return user;
   } catch (error) {
