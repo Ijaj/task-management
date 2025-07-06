@@ -3,7 +3,6 @@ import { register, login, deleteUser } from "../services/auth.service";
 import {
   getTokenFromRequest,
   getUserFromToken,
-  getUserIdFromToken,
 } from "../utils/helpers";
 
 export const registerUser = async (

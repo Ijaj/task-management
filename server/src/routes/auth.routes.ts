@@ -1,13 +1,13 @@
 import express from "express";
+import { body } from "express-validator";
 import {
   _delete,
   loginUser,
   registerUser,
   verifyUser,
 } from "../controllers/auth.controller";
-import { body } from "express-validator";
-import { validateMiddleware } from "../middlewares/validate.middleware";
 import { authMiddleware } from "../middlewares/auth.middleware";
+import { validateMiddleware } from "../middlewares/validate.middleware";
 
 const router = express.Router();
 
